@@ -16,6 +16,7 @@ form.addEventListener('submit', changeCityWeather)
 function changeCityWeather(event){
 	const city = document.querySelector('#city-name').value
 	weather.changeCity(city)
+	ls.setLocationData(city)
 	getWeather()
 	document.querySelector('#city-name').value = ''
 	event.preventDefault()
