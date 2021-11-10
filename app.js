@@ -1,7 +1,22 @@
-// Weather object
+// Weather object - init location
 const weather = new Weather('Tallinn')
 // UI object
 const ui = new UI()
+// init DOM reloaded event
+document.addEventListener('DOMContentLoaded', getWeather)
+
+// change city and get weather data
+const form = document.querySelector('#change-city')
+form.addEventListener('submit', changeCityWeather)
+
+function changeCityWeather(event){
+	const city = document.querySelector('#city-name').value
+	weather.changeCity(city)
+	getWeather()
+	document.querySelector('#city-name').value = ''
+	event.preventDefault()
+}
+
 
 // get city weather and display it
 function getWeather() {
@@ -12,4 +27,3 @@ function getWeather() {
   .catch(error => console.log(error));
 }
 
-getWeather()
